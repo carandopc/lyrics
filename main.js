@@ -96,9 +96,6 @@ function getLyrics(hit) {
 	fetch('https://genius.com/songs/' + hit.result.id + '/embed.js')
 	.then(response => response.text())
 	.then(response => {
-		document.getElementById('background').style.backgroundImage = "url(" + hit.result.header_image_url + ")";
-		document.getElementById('title').innerHTML = hit.result.full_title;
-
 		var substring = response.substring(response.indexOf('JSON.parse') + 12, response.lastIndexOf('document.write') - 6);
 
 		var replace = substring
@@ -112,8 +109,15 @@ function getLyrics(hit) {
 		var tempHtml = document.createElement('html');
 		tempHtml.innerHTML = JSON.parse(replace);
 
-		document.getElementById('lyrics').innerHTML = '';
-		document.getElementById('lyrics').appendChild(tempHtml.getElementsByClassName('rg_embed_body')[0]);
+		document.getElementById('background').style.backgroundImage = "url(" + hit.result.header_image_url + ")";
+
+		var title = document.createElement('div');
+		title.innerHTML = hit.result.full_title;
+
+		var lyrics = document.getElementById('lyrics');
+		lyrics.innerHTML = '';
+		lyrics.appendChild(title);
+		lyrics.appendChild(tempHtml.getElementsByClassName('rg_embed_body')[0]);
 	})
 	.catch(error => console.error(error));
 }
