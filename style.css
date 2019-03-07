@@ -1,0 +1,45 @@
+html, body {
+	margin: 0;
+
+	height: 100%;
+	width: 100%;
+
+	color: white;
+
+	font-size: 18px;
+	font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+.background {
+	background-color: black;
+	
+	background-position: center;
+	background-repeat: no-repeat;
+	background-size: cover;
+
+	filter: blur(6px) grayscale(100%) brightness(30%);
+	-webkit-filter: blur(6px) grayscale(100%) brightness(30%);
+	transform: scale(1.1);
+
+	height: 100%;
+
+	position: fixed;
+	left: 0;
+	right: 0;
+
+	z-index: -1;
+}
+
+main {
+	padding: 1rem;
+
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	
+	line-height: 1.8rem;	
+}
+
+main > div {
+	margin: auto;
+}
